@@ -19,6 +19,10 @@ galleryItems.forEach((image) => {
 gallery.addEventListener("click", (e) => {
   e.preventDefault();
 
+  const dataSrc = e.target.getAttribute("data-source");
+
+  e.target.src = dataSrc;
+
   basicLightbox
     .create(
       `
@@ -26,12 +30,10 @@ gallery.addEventListener("click", (e) => {
 	`
     )
     .show();
-
-  console.log(e.target.src);
 });
 
-// selectedImage.addEventListener("click", (e) => {
-//   e.preventDefault();
-//   console.log(e.target.src);
-
-// });
+gallery.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    instance.close();
+  }
+});
