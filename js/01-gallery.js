@@ -21,19 +21,14 @@ gallery.addEventListener("click", (e) => {
 
   const dataSrc = e.target.getAttribute("data-source");
 
-  e.target.src = dataSrc;
+  const instance = basicLightbox.create(
+    `<img width="1400" height="900" src="${dataSrc}">`
+  );
+  instance.show();
 
-  basicLightbox
-    .create(
-      `
-		<img width="1400" height="900" src="${e.target.src}">
-	`
-    )
-    .show();
-});
-
-gallery.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    instance.close();
-  }
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      instance.close();
+    }
+  });
 });
